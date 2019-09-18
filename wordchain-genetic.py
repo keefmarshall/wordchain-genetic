@@ -11,10 +11,10 @@ def loadFile(filename):
 
 
 dictionary = loadFile("50kwords.txt")
-inputs = loadFile("wordpairs.txt")
+pairs = loadFile("wordpairs.txt")
 sol = Solution()
-for input in inputs:
-    (start, end) = input.split(" ")
+for pair in pairs:
+    (start, end) = pair.split(" ")
     (count, chain) = sol.minMutation(start, end, dictionary)
     chain.append(end)
     print(count + 1, ",".join(chain))
