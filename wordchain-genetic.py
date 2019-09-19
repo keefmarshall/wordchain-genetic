@@ -23,7 +23,6 @@ def getChainForPair(pair):
     (count, chain) = sol.minMutation(start, end, dict_by_size[len(start)])
     chain.append(end)
     return (count + 1, ",".join(chain))
-    # print(count + 1, ",".join(chain))
 
 
 dictionary = loadFile("50kwords.txt")
@@ -32,10 +31,9 @@ sol = Solution()
 
 pairs = loadFile("wordpairs.txt")
 
+# see https://www.machinelearningplus.com/python/parallel-processing-python/
 pool = mp.Pool(mp.cpu_count())
 chains = pool.map(getChainForPair, [pair for pair in pairs])
 pool.close()
 
 [print(count, chain) for (count, chain) in chains]
-# for pair in pairs:
-#     print(getChainForPair(pair))
